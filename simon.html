@@ -7,26 +7,40 @@
     <title>FreeCodeCamp - Simon Game</title>
   </head>
   <body>
-
     <div id="wrapper">
-    <div id="gameBoard">
-      <div class="button" id="greenButton"></div>
-      <div class="button" id="redButton"></div>
-      <div class="button" id="yellowButton"></div>
-      <div class="button" id="blueButton"></div>
-      <div id="controlPanel">
-        <div id="controlPanelOverlay">
-          <div id="panelLabelMask">
-            <div id="panelLabelSection">
-              <span id="panelLabel">Simon</span>
+      <div id="gameBoard">
+        <div class="colorButton" id="greenButton"></div>
+        <div class="colorButton" id="redButton"></div>
+        <div class="colorButton" id="yellowButton"></div>
+        <div class="colorButton" id="blueButton"></div>
+        <div id="controlPanel">
+          <div id="controlPanelOverlay">
+            <div id="panelLabelMask">
+              <div id="panelLabelSection">
+                <span id="panelLabel">Simon</span>
+              </div>
+            </div>
+            <div id="buttonRow">
+              <div class="buttonWell">
+                <div class="optionButton" id="startButton"></div>
+                <div class="optionButtonLabel">Start</div>
+              </div>
+              <div class="buttonWell">
+                <div class="optionButton" id="strictButton"></div>
+                <div class="optionButtonLabel">Strict</div>
+              </div>
+              <div class="buttonWell">
+                <div class="optionButton" id="resetButton"></div>
+                <div class="optionButtonLabel">Reset</div>
+              </div>
+            </div>
+            <div id="counterSection">
+              <div id="counterDisplay">- -</div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    </div>
-    <div id="startButton"></div>
-    <div id="strictButton"></div>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script type="text/javascript" src="simon.js"></script>

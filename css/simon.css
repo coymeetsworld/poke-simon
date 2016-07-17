@@ -16,7 +16,7 @@
   z-index: 1;
 }
 
-.button {
+.colorButton {
   position: relative;
   height: 325px;
   width: 325px;
@@ -103,15 +103,52 @@
 
 #buttonRow {
   position: absolute;
-  width: 350px;
-  background-color: green;
   text-align: center;
-  top: 210px;
+  width: 350px;
+  top: 180px;
+}
+
+.buttonWell {
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+}
+
+.optionButton {
+  height: 40px;
+  width: 40px;
+  border: 5px solid black;
+  border-radius: 100%;
 }
 
 #startButton {
-
+  background-color: red;
 }
 #strictButton {
+  background-color: yellow;
+}
+#resetButton {
+  background-color: teal;
+}
 
+.optionButtonLabel {
+  position: relative;
+  top: 7px;
+  font-size: 1em;
+  font-weight: bold;
+  color: white;
+}
+
+#counterSection {
+  position: absolute;
+  text-align: center;
+  width: 350px;
+  height: 40px;
+  top: 300px;
+}
+
+#counterDisplay {
+  position: relative;
+  color: white;
+  text-align: center;
 }
