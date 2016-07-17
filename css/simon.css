@@ -91,6 +91,24 @@
   z-index: 10;
 }
 
+#panelLabel {
+  position: absolute;
+  width: 350px;
+  font-size: 4em;
+  height: 350px;
+  text-align: center;
+  top: 107px;
+  /* Change top and font-family/size to get better graphic. */
+}
+
+#buttonRow {
+  position: absolute;
+  width: 350px;
+  background-color: green;
+  text-align: center;
+  top: 210px;
+}
+
 #startButton {
 
 }
