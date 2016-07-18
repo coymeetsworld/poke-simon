@@ -23,6 +23,7 @@
   margin: 30px;
   z-index: 2;
   float: left;
+  overflow: hidden;
 }
 
 #greenButton {
@@ -30,6 +31,10 @@
   background-color: green;
   margin-bottom: 10px;
   margin-right: 10px;
+
+}
+#greenButton:active {
+  background: linear-gradient( 135deg, green 20%, lime );
 }
 #redButton {
   border-top-right-radius: 325px;
@@ -37,11 +42,18 @@
   margin-bottom: 10px;
   margin-left: 10px;
 }
+#redButton:active {
+  background: linear-gradient( 225deg, red 20%, pink );
+}
+
 #yellowButton {
   border-bottom-left-radius: 325px;
   background-color: yellow;
   margin-top: 10px;
   margin-right: 10px;
+}
+#yellowButton:active {
+  background: linear-gradient(45deg, yellow 20%, white);
 }
 #blueButton {
   border-bottom-right-radius: 325px;
@@ -49,6 +61,37 @@
   margin-top: 10px;
   margin-left: 10px;
 }
+#blueButton:active {
+  background: linear-gradient(315deg, blue 20%, skyblue);
+}
+
+.pokemonImage {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  z-index: -1;
+}
+#imageBulbasaur {
+  position: relative;
+  left: 20px;
+  top: 10px;
+}
+#imageCharmander {
+  position: relative;
+  left: 40px;
+  top: 40px;
+}
+#imagePikachu {
+  position: relative;
+  left: 10px;
+  top: 80px;
+}
+#imageSquirtle {
+  position: relative;
+  left: 75px;
+  top: 85px;
+}
+
 
 #controlPanel {
   height: 400px;
@@ -123,6 +166,7 @@
   border: 5px solid black;
   border-radius: 100%;
 }
+
 
 #startButton {
   background-color: red;
