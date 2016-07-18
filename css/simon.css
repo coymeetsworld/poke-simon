@@ -94,10 +94,13 @@
 #panelLabel {
   position: absolute;
   width: 350px;
-  font-size: 4em;
+  font-family: Orbitron, sans-serif;
+  font-weight: 900;
+  font-size: 3.4em;
   height: 350px;
   text-align: center;
-  top: 107px;
+  top: 130px;
+  left: 5px;
   /* Change top and font-family/size to get better graphic. */
 }
 
