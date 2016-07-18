@@ -51,12 +51,20 @@ $(document).ready(function() {
   }
 
 
+  var timeOut;
   function chooseMove(buttonObj) {
-    $(buttonObj.buttonID).css('background', buttonObj.buttonPressBG);
-    setTimeout(function(){
-        $(buttonObj.buttonID).css('background', buttonObj.buttonBG);
-   }, 750); //TODO if button pressed within a second need to reset all highlighted buttons
 
+    if (timeOut) {
+      setTimeout(function() {
+
+        $(buttonObj.buttonID).css('background', buttonObj.buttonBG);
+      }, 100);
+    }
+    $(buttonObj.buttonID).css('background', buttonObj.buttonPressBG);
+    timeOut = setTimeout(function(){
+        $(buttonObj.buttonID).css('background', buttonObj.buttonBG);
+        timeOut = null;
+    }, 750);
     buttonObj.sound.pause(); // in case sound is playing when button is clicked again.
     buttonObj.sound.currentTime = 0;
     buttonObj.sound.play();
