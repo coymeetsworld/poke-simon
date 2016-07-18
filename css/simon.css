@@ -32,19 +32,13 @@
   background-color: green;
   margin-bottom: 10px;
   margin-right: 10px;
+}
 
-}
-#greenButton:active {
-  background: linear-gradient( 135deg, green 20%, lime );
-}
 #redButton {
   border-top-right-radius: 325px;
   background-color: red;
   margin-bottom: 10px;
   margin-left: 10px;
-}
-#redButton:active {
-  background: linear-gradient( 225deg, red 20%, pink );
 }
 
 #yellowButton {
@@ -53,17 +47,12 @@
   margin-top: 10px;
   margin-right: 10px;
 }
-#yellowButton:active {
-  background: linear-gradient(45deg, yellow 20%, white);
-}
+
 #blueButton {
   border-bottom-right-radius: 325px;
   background-color: blue;
   margin-top: 10px;
   margin-left: 10px;
-}
-#blueButton:active {
-  background: linear-gradient(315deg, blue 20%, skyblue);
 }
 
 .pokemonImage {
