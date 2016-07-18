@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
-
-
+  $("#sevenSegDisplay").sevenSeg({ digits: 2, value: '--' });
   $("#greenButton").click(function() {
     console.log("Green button pressed.");
   });

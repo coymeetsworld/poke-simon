@@ -66,6 +66,7 @@
   width: 360px;
   background-color: #162129;
   border-radius: 360px;
+  border: 5px solid gray;
   position: relative;
   top: 20px;
   left: 20px;
@@ -83,11 +84,10 @@
 
 #panelLabelSection {
   position: absolute;
-  height: 350px;
-  width: 350px;
+  height: 360px;
+  width: 360px;
   background-color: orange;
   border-radius: 900px;
-  border: 5px solid gray;
   z-index: 10;
 }
 
@@ -144,11 +144,18 @@
   text-align: center;
   width: 350px;
   height: 40px;
-  top: 300px;
+  top: 290px;
 }
 
 #counterDisplay {
   position: relative;
   color: white;
-  text-align: center;
+}
+
+#sevenSegDisplay {
+  height: 50px;
+  width: 100px;
+  margin-left: 10px;
+  position: relative;
+  display: inline-block;
 }
