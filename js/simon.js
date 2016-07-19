@@ -24,7 +24,6 @@ $(document).ready(function() {
   var yellowButton = {sound: pikachuSound, buttonID: '#yellowButton', buttonBG: yellowButtonBg, buttonPressBG: yellowButtonPressBg};
   var blueButton = {sound: squirtleSound, buttonID: '#blueButton', buttonBG: blueButtonBg, buttonPressBG: blueButtonPressBg};
 
-  var gameOn = false;
 
   function disableButtons() {
     console.log("Buttons are disabled");
@@ -60,17 +59,38 @@ $(document).ready(function() {
   });
   disableButtons();
 
+  var gameOn = false;
   $("#startButton").click(function() {
     console.log("Start button pressed.");
     startGame();
   });
+
+  var strictMode = false;
   $("#strictButton").click(function() {
     console.log("Strict button pressed.");
+    toggleStrictOption();
   });
+
   $("#resetButton").click(function() {
     console.log("Reset button pressed.");
     resetGame();
   });
+
+
+  function toggleStrictOption() {
+    if (strictMode) {
+      strictMode = false;
+      $("#strictButton").css('background', 'gold');
+      $("#strictButton").css('border', '3px solid black');
+      $("#strictButton").css('left', '0px');
+    } else {
+      strictMode = true;
+      $("#strictButton").css('background', 'radial-gradient(at 50%, yellow 5%, gold)');
+      $("#strictButton").css('border', '2px solid black');
+      $("#strictButton").css('left', '1px');
+    }
+  }
+
 
   $("#sevenSegDisplay").sevenSeg({ digits: 2, value: '' });
 
@@ -120,10 +140,12 @@ $(document).ready(function() {
       //buttonObj.sound.currentTime = 0;
       $("#sevenSegDisplay").sevenSeg({ digits: 2, value: '--' });
       psyduckSound.play();
-
-      //if strictMode
-      //else
       currentMove = 0;
+
+      if(strictMode) {
+        currentCount = 1;
+        generateButtonPattern(); /* Game starts over, new pattern created. */
+      }
 
       setTimeout(showCurrentPattern, 3000);
       return;
