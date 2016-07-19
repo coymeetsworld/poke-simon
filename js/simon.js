@@ -22,6 +22,47 @@ $(document).ready(function() {
   var yellowButton = {sound: pikachuSound, buttonID: '#yellowButton', buttonBG: yellowButtonBg, buttonPressBG: yellowButtonPressBg};
   var blueButton = {sound: squirtleSound, buttonID: '#blueButton', buttonBG: blueButtonBg, buttonPressBG: blueButtonPressBg};
 
+  function disableButtons() {
+    console.log("Buttons are disabled");
+    $("#greenButton").css('pointer-events', 'none');
+    $("#redButton").css('pointer-events', 'none');
+    $("#yellowButton").css('pointer-events', 'none');
+    $("#blueButton").css('pointer-events', 'none');
+  }
+
+  function enableButtons() {
+    console.log("Buttons are enabled");
+    $("#greenButton").css('pointer-events', 'auto');
+    $("#redButton").css('pointer-events', 'auto');
+    $("#yellowButton").css('pointer-events', 'auto');
+    $("#blueButton").css('pointer-events', 'auto');
+  }
+
+  $("#greenButton").click(function() {
+    console.log("Green button pressed.");
+    chooseMove(greenButton);
+  });
+  $("#redButton").click(function() {
+    console.log("Red button pressed.");
+    chooseMove(redButton);
+  });
+  $("#blueButton").click(function() {
+    console.log("Blue button pressed.");
+    chooseMove(blueButton);
+  });
+  $("#yellowButton").click(function() {
+    console.log("Yellow button pressed.");
+    chooseMove(yellowButton);
+  });
+  disableButtons();
+
+  $("#strictButton").click(function() {
+    console.log("Strict button pressed.");
+  });
+  $("#startButton").click(function() {
+    console.log("Start button pressed.");
+    startGame();
+  });
 
   $("#sevenSegDisplay").sevenSeg({ digits: 2, value: '--' });
 
@@ -49,12 +90,10 @@ $(document).ready(function() {
     }
   }
 
-  //var currentMove; /* Move player is currently on. */
-  //var currentCount; /* Number of moves player has to make. */
+
   /* Function when user presses a button. */
   var timeOut;
   function chooseMove(buttonObj) {
-
 
     if (buttonObj != buttonPattern[currentMove]) {
       console.log("False!");
@@ -96,6 +135,7 @@ $(document).ready(function() {
 
       if (movesShown == currentCount) {
         clearInterval(myInterval);
+        enableButtons();
         return;
       }
 
@@ -118,16 +158,14 @@ $(document).ready(function() {
   var currentMove; /* Move player is currently on. */
   var currentCount; /* Number of moves player has to make. */
   function showCurrentPattern() {
-
+    disableButtons();
     var showVal;
     if (currentCount < 10) {
       showVal = '0' + currentCount.toString();
     } else {
       showVal = currentCount.toString();
     }
-
     console.log("ShowVal: " + showVal);
-
     $("#sevenSegDisplay").sevenSeg({ digits: 2, value: showVal });
     showMove();
   }
@@ -142,27 +180,4 @@ $(document).ready(function() {
   }
 
 
-  $("#greenButton").click(function() {
-    console.log("Green button pressed.");
-    chooseMove(greenButton);
-  });
-  $("#redButton").click(function() {
-    console.log("Red button pressed.");
-    chooseMove(redButton);
-  });
-  $("#blueButton").click(function() {
-    console.log("Blue button pressed.");
-    chooseMove(blueButton);
-  });
-  $("#yellowButton").click(function() {
-    console.log("Yellow button pressed.");
-    chooseMove(yellowButton);
-  });
-  $("#strictButton").click(function() {
-    console.log("Strict button pressed.");
-  });
-  $("#startButton").click(function() {
-    console.log("Start button pressed.");
-    startGame();
-  });
 });
