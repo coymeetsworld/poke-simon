@@ -101,9 +101,9 @@
 #controlPanelOverlay {
   height: 360px;
   width: 360px;
-  background-color: #162129;
+  background-color: white;
   border-radius: 360px;
-  border: 5px solid gray;
+  border: 5px solid #222;
   position: relative;
   top: 15px;
   left: 15px;
@@ -115,7 +115,7 @@
   height: 175px;
   width: 360px;
   overflow: hidden;
-  border-bottom: 5px solid gray;
+  border-bottom: 5px solid #222;
   z-index: 9;
 }
 
@@ -123,7 +123,7 @@
   position: absolute;
   height: 360px;
   width: 360px;
-  background-color: orange;
+  background-color: red;
   border-radius: 900px;
   z-index: 10;
 }
@@ -144,8 +144,9 @@
 #buttonRow {
   position: absolute;
   text-align: center;
-  width: 350px;
+  width: 360px;
   top: 180px;
+  left: 5px;
 }
 
 .buttonWell {
@@ -155,9 +156,9 @@
 }
 
 .optionButton {
-  height: 40px;
-  width: 40px;
-  border: 5px solid black;
+  height: 25px;
+  width: 25px;
+  border: 3px solid black;
   border-radius: 100%;
 }
 
@@ -175,9 +176,10 @@
 .optionButtonLabel {
   position: relative;
   top: 7px;
+  left: -5px;
   font-size: 1em;
   font-weight: bold;
-  color: white;
+  color: black;
 }
 
 #counterSection {
@@ -190,7 +192,6 @@
 
 #counterDisplay {
   position: relative;
-  color: white;
 }
 
 #sevenSegDisplay {
