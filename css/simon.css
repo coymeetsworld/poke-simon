@@ -36,21 +36,21 @@
 
 #redButton {
   border-top-right-radius: 325px;
-  background-color: red;
+  background-color: darkred;
   margin-bottom: 10px;
   margin-left: 10px;
 }
 
 #yellowButton {
   border-bottom-left-radius: 325px;
-  background-color: yellow;
+  background-color: goldenrod;
   margin-top: 10px;
   margin-right: 10px;
 }
 
 #blueButton {
   border-bottom-right-radius: 325px;
-  background-color: blue;
+  background-color: darkblue;
   margin-top: 10px;
   margin-left: 10px;
 }

@@ -10,53 +10,51 @@ $(document).ready(function() {
   var pikachuSound = new Audio('media/pikachu.wav');
   var greenButtonPressBg = 'linear-gradient(135deg, green 20%, lime )';
   var greenButtonBg = 'green';
-  var redButtonPressBg = 'linear-gradient(225deg, red 20%, pink )';
-  var redButtonBg = 'red';
-  var yellowButtonPressBg = 'linear-gradient(45deg, yellow 20%, white)';
-  var yellowButtonBg = 'yellow';
+  var redButtonPressBg = 'linear-gradient(225deg, darkred 20%, red 45%, pink)';
+  var redButtonBg = 'darkred';
+  var yellowButtonPressBg = 'linear-gradient(45deg, goldenrod 5%, yellow 45%, white)';
+  var yellowButtonBg = 'goldenrod';
   var blueButtonPressBg = 'linear-gradient(315deg, blue 20%, skyblue)';
-  var blueButtonBg = 'blue';
+  var blueButtonBg = 'darkblue';
 
   var greenButton = {sound: bulbasaurSound, buttonID: '#greenButton', buttonBG: greenButtonBg, buttonPressBG: greenButtonPressBg};
   var redButton = {sound: charmanderSound, buttonID: '#redButton', buttonBG: redButtonBg, buttonPressBG: redButtonPressBg};
   var yellowButton = {sound: pikachuSound, buttonID: '#yellowButton', buttonBG: yellowButtonBg, buttonPressBG: yellowButtonPressBg};
   var blueButton = {sound: squirtleSound, buttonID: '#blueButton', buttonBG: blueButtonBg, buttonPressBG: blueButtonPressBg};
 
-  var currentMove; /* Move player is currently on. */
-  var currentCount; /* Number of moves player has to make. */
+
   $("#sevenSegDisplay").sevenSeg({ digits: 2, value: '--' });
 
   /* End Setup */
 
-  var soundPattern;
-  function generateSoundPattern() {
-    soundPattern = []; /* Resets pattern in event game is reset or started over.*/
+  var buttonPattern;
+  function generateButtonPattern() {
+    buttonPattern = []; /* Resets pattern in event game is reset or started over.*/
 
     for (var i = 0; i < 20; i++) {
       switch (Math.floor(Math.random() * 4 + 1)) {
         case 1:
-          soundPattern.push(bulbasaurSound);
+          buttonPattern.push(greenButton);
           break;
         case 2:
-          soundPattern.push(charmanderSound);
+          buttonPattern.push(redButton);
           break;
         case 3:
-          soundPattern.push(pikachuSound);
+          buttonPattern.push(yellowButton);
           break;
         case 4:
-          soundPattern.push(squirtleSound);
+          buttonPattern.push(blueButton);
           break;
       }
     }
   }
 
-
+  /* Function when user presses a button. */
   var timeOut;
   function chooseMove(buttonObj) {
 
     if (timeOut) {
       setTimeout(function() {
-
         $(buttonObj.buttonID).css('background', buttonObj.buttonBG);
       }, 100);
     }
@@ -71,12 +69,45 @@ $(document).ready(function() {
   }
 
 
+  /* Function when computer shows a button to press. */
+  function showMove(buttonObj) {
+    var movesShown = 0;
+    var myInterval;
+    function timer() {
+
+      if (movesShown == currentCount) {
+        clearInterval(myInterval);
+      }
+
+      $(buttonPattern[movesShown].buttonID).css('background', buttonPattern[movesShown].buttonPressBG);
+      setTimeout(function(){
+        console.log("Shutting down: " + buttonPattern[movesShown-1].buttonID);
+        $(buttonPattern[movesShown-1].buttonID).css('background', buttonPattern[movesShown-1].buttonBG);
+      }, 500);
+
+      buttonPattern[movesShown].sound.play();
+
+      movesShown++;
+    }
+
+    myInterval = setInterval(timer, 2000);
+  }
+
+
+
+  var currentMove; /* Move player is currently on. */
+  var currentCount; /* Number of moves player has to make. */
+  function showCurrentPattern() {
+    showMove();
+  }
+
+
   function startGame() {
     currentMove = 1;
-    currentCount = 0;
-    generateSoundPattern();
-    console.log(soundPattern);
-    //showMove();
+    currentCount = 3;
+    generateButtonPattern();
+    console.log(buttonPattern);
+    showCurrentPattern();
   }
 
 
