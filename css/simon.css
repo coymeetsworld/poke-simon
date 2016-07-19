@@ -6,6 +6,7 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  background-color: #BF1E2E;
 }
 
 @font-face {
@@ -17,7 +18,7 @@ body {
   font-size: 0.8em;
   cursor: pointer;
 }
-#wrapper {
+#stuff {
   width: 730px;
   height: 730px;
   margin: 0 auto;
@@ -29,7 +30,7 @@ body {
   background-color: black;
   border-radius: 365px;
   margin: 0 auto;
-  margin-top: 150px;
+  margin-top: 100px;
   z-index: 1;
 }
 
@@ -147,7 +148,7 @@ body {
   position: absolute;
   height: 360px;
   width: 360px;
-  background-color: red;
+  background-color: #BF1E2E;
   border-radius: 900px;
   z-index: 10;
 }
@@ -240,4 +241,26 @@ body {
   margin-left: 10px;
   position: relative;
   display: inline-block;
+}
+
+#pokeBallCorner {
+  background: url('../media/images/pokeball_corner.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 400px;
+  height: 400px;
+}
+
+#pokeBall1 {
+  background: url('../media/images/pokeball_background.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 30px;
+  right: 120px;
+  width: 200px;
+  height: 200px;
 }
