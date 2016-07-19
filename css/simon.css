@@ -248,6 +248,8 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   position: fixed;
+  z-index: -1;
+	overflow: hidden;
   bottom: 0;
   left: 0;
   width: 400px;
@@ -259,6 +261,8 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
+  z-index: -1;
+	overflow: hidden;
   top: 30px;
   right: 120px;
   width: 200px;
