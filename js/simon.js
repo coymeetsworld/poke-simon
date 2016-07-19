@@ -285,4 +285,24 @@ $(document).ready(function() {
       showCurrentPattern();
     }
   }
+
+  /** Modal **/
+
+  $('#myAbout').click(function() {
+    $('#myModal').css('display', 'block');
+  });
+
+  $('.close').click(function() {
+    $('#myModal').css('display', 'none');
+  });
+
+  // When the user clicks anywhere outside of the modal, close it
+  $(window).click(function(event) {
+    if ($(event.target).is('#myModal') && !$(event.target).is('#myAbout')) {
+      $('#myModal').css('display', 'none');
+    }
+  });
+
+  /** End Modal **/
+
 });
