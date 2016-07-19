@@ -97,17 +97,6 @@ $(document).ready(function() {
   var timeOut;
   function chooseMove(buttonObj) {
 
-    if (buttonObj != buttonPattern[currentMove]) {
-      console.log("False!");
-      //buttonObj.sound.pause(); // in case sound is playing when button is clicked again.
-      //buttonObj.sound.currentTime = 0;
-      $("#sevenSegDisplay").sevenSeg({ digits: 2, value: '--' });
-      psyduckSound.play();
-
-      return;
-    }
-    console.log("Correct");
-
     if (timeOut) {
       setTimeout(function() {
         $(buttonObj.buttonID).css('background', buttonObj.buttonBG);
@@ -118,6 +107,23 @@ $(document).ready(function() {
         $(buttonObj.buttonID).css('background', buttonObj.buttonBG);
         timeOut = null;
     }, 750);
+
+    if (buttonObj != buttonPattern[currentMove]) {
+      console.log("False!");
+      //buttonObj.sound.pause(); // in case sound is playing when button is clicked again.
+      //buttonObj.sound.currentTime = 0;
+      $("#sevenSegDisplay").sevenSeg({ digits: 2, value: '--' });
+      psyduckSound.play();
+
+      //if strictMode
+      //else
+      currentMove = 0;
+
+      setTimeout(showCurrentPattern, 3000);
+      return;
+    }
+
+    console.log("Correct");
     buttonObj.sound.pause(); // in case sound is playing when button is clicked again.
     buttonObj.sound.currentTime = 0;
     buttonObj.sound.play();
@@ -135,7 +141,7 @@ $(document).ready(function() {
 
 
   /* Function when computer shows a button to press. */
-  function showMove(buttonObj) {
+  function showMove() {
     var movesShown = 0;
     var myInterval;
     function timer() {
@@ -165,6 +171,7 @@ $(document).ready(function() {
   var currentMove; /* Move player is currently on. */
   var currentCount; /* Number of moves player has to make. */
   function showCurrentPattern() {
+    console.log("calling showCurrentPattern");
     disableButtons();
     var showVal;
     if (currentCount < 10) {
