@@ -49,9 +49,18 @@ $(document).ready(function() {
     }
   }
 
+  //var currentMove; /* Move player is currently on. */
+  //var currentCount; /* Number of moves player has to make. */
   /* Function when user presses a button. */
   var timeOut;
   function chooseMove(buttonObj) {
+
+
+    if (buttonObj != buttonPattern[currentMove]) {
+      console.log("False!");
+      return;
+    }
+    console.log("Correct");
 
     if (timeOut) {
       setTimeout(function() {
@@ -66,6 +75,16 @@ $(document).ready(function() {
     buttonObj.sound.pause(); // in case sound is playing when button is clicked again.
     buttonObj.sound.currentTime = 0;
     buttonObj.sound.play();
+
+    currentMove++;
+    if (currentMove == currentCount) {
+      currentCount++;
+      currentMove = 0;
+      showCurrentPattern();
+    }
+
+
+
   }
 
 
@@ -77,10 +96,11 @@ $(document).ready(function() {
 
       if (movesShown == currentCount) {
         clearInterval(myInterval);
+        return;
       }
 
       $(buttonPattern[movesShown].buttonID).css('background', buttonPattern[movesShown].buttonPressBG);
-      setTimeout(function(){
+      setTimeout(function() {
         console.log("Shutting down: " + buttonPattern[movesShown-1].buttonID);
         $(buttonPattern[movesShown-1].buttonID).css('background', buttonPattern[movesShown-1].buttonBG);
       }, 500);
@@ -98,13 +118,24 @@ $(document).ready(function() {
   var currentMove; /* Move player is currently on. */
   var currentCount; /* Number of moves player has to make. */
   function showCurrentPattern() {
+
+    var showVal;
+    if (currentCount < 10) {
+      showVal = '0' + currentCount.toString();
+    } else {
+      showVal = currentCount.toString();
+    }
+
+    console.log("ShowVal: " + showVal);
+
+    $("#sevenSegDisplay").sevenSeg({ digits: 2, value: showVal });
     showMove();
   }
 
 
   function startGame() {
-    currentMove = 1;
-    currentCount = 3;
+    currentMove = 0;
+    currentCount = 1;
     generateButtonPattern();
     console.log(buttonPattern);
     showCurrentPattern();
