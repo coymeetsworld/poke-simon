@@ -247,7 +247,7 @@ body {
   background: url('../media/images/pokeball_corner.jpg');
   background-repeat: no-repeat;
   background-size: contain;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 400px;
