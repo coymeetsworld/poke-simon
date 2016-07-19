@@ -8,6 +8,8 @@ $(document).ready(function() {
   var charmanderSound = new Audio('media/charmander.wav');
   var squirtleSound = new Audio('media/squirtle.wav');
   var pikachuSound = new Audio('media/pikachu.wav');
+  var psyduckSound = new Audio('media/psyduck.mp3');
+
   var greenButtonPressBg = 'linear-gradient(135deg, green 20%, lime )';
   var greenButtonBg = 'green';
   var redButtonPressBg = 'linear-gradient(225deg, darkred 20%, red 45%, pink)';
@@ -97,6 +99,11 @@ $(document).ready(function() {
 
     if (buttonObj != buttonPattern[currentMove]) {
       console.log("False!");
+      //buttonObj.sound.pause(); // in case sound is playing when button is clicked again.
+      //buttonObj.sound.currentTime = 0;
+      $("#sevenSegDisplay").sevenSeg({ digits: 2, value: '--' });
+      psyduckSound.play();
+
       return;
     }
     console.log("Correct");
@@ -150,7 +157,7 @@ $(document).ready(function() {
       movesShown++;
     }
 
-    myInterval = setInterval(timer, 2000);
+    myInterval = setInterval(timer, 1500);
   }
 
 
