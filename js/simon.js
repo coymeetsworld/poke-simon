@@ -9,6 +9,7 @@ $(document).ready(function() {
   var squirtleSound = new Audio('media/sounds/squirtle.wav');
   var pikachuSound = new Audio('media/sounds/pikachu.wav');
   var psyduckSound = new Audio('media/sounds/psyduck.mp3');
+  var victorySound = new Audio('media/sounds/victory.mp3');
 
   var greenButtonPressBg = 'linear-gradient(135deg, green 20%, lime )';
   var greenButtonBg = 'green';
@@ -118,6 +119,29 @@ $(document).ready(function() {
     }
   }
 
+  function victory() {
+    victorySound.play();
+    disableButtons();
+    gameOn = false;
+
+    setTimeout(function(){
+      $('#greenButton').css('background', greenButton.buttonPressBG);
+      $('#redButton').css('background', redButton.buttonPressBG);
+      $('#yellowButton').css('background', yellowButton.buttonPressBG);
+      $('#blueButton').css('background', blueButton.buttonPressBG);
+      $("#sevenSegDisplay").sevenSeg({ digits: 2, value: '88' });
+    }, 1000);
+
+    setTimeout(function(){
+      $('#greenButton').css('background', greenButton.buttonBG);
+      $('#redButton').css('background', redButton.buttonBG);
+      $('#yellowButton').css('background', yellowButton.buttonBG);
+      $('#blueButton').css('background', blueButton.buttonBG);
+      showStartButtonOff();
+      $("#sevenSegDisplay").sevenSeg({ digits: 2, value: '--' });
+    }, 24000);
+
+  }
 
   /* Function when user presses a button. */
   var timeOut;
@@ -158,13 +182,15 @@ $(document).ready(function() {
 
     currentMove++;
     if (currentMove == currentCount) {
-      currentCount++;
-      currentMove = 0;
-      showCurrentPattern();
+
+      if (currentMove == 2) {
+        victory();
+      } else {
+        currentCount++;
+        currentMove = 0;
+        showCurrentPattern();
+      }
     }
-
-
-
   }
 
 
