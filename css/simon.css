@@ -156,6 +156,7 @@
 }
 
 .optionButton {
+  position: relative;
   height: 25px;
   width: 25px;
   border: 3px solid black;
@@ -166,11 +167,23 @@
 #startButton {
   background-color: red;
 }
+#startButton:active {
+  left: 1px;
+  border: 2px solid black;
+}
 #strictButton {
   background-color: yellow;
 }
+#strictButton:active {
+  left: 1px;
+  border: 2px solid black;
+}
 #resetButton {
   background-color: teal;
+}
+#resetButton:active {
+  left: 1px;
+  border: 2px solid black;
 }
 
 .optionButtonLabel {
