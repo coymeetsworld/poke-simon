@@ -1,4 +1,12 @@
 
+@font-face {
+    font-family: PokemonText;
+    src: url('../media/fonts/PokemonGB.ttf');
+}
+.pokeText {
+  font-family: PokemonText;
+  font-size: 0.8em;
+}
 #wrapper {
   width: 730px;
   height: 730px;
@@ -118,6 +126,13 @@
   z-index: 9;
 }
 
+#victorySection {
+  position: absolute;
+  color: white;
+  top: 75px;
+  left: 50px;
+  z-index: 11;
+}
 #panelLabelSection {
   position: absolute;
   height: 360px;

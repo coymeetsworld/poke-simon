@@ -5,11 +5,17 @@ $(document).ready(function() {
 
   /* Setup */
   var bulbasaurSound = new Audio('media/sounds/bulbasaur.wav');
+  bulbasaurSound.volume = 0.1;
   var charmanderSound = new Audio('media/sounds/charmander.wav');
+  charmanderSound.volume = 0.1;
   var squirtleSound = new Audio('media/sounds/squirtle.wav');
+  squirtleSound.volume = 0.1;
   var pikachuSound = new Audio('media/sounds/pikachu.wav');
+  pikachuSound.volume = 0.1;
   var psyduckSound = new Audio('media/sounds/psyduck.mp3');
+  psyduckSound.volume = 0.1;
   var victorySound = new Audio('media/sounds/victory.mp3');
+  victorySound.volume = 0.05;
 
   var greenButtonPressBg = 'linear-gradient(135deg, green 20%, lime )';
   var greenButtonBg = 'green';
@@ -125,6 +131,8 @@ $(document).ready(function() {
     gameOn = false;
 
     setTimeout(function(){
+      $("#startButton").css('pointer-events', 'none');
+      $('#victorySection .pokeText').text("It's super effective!");
       $('#greenButton').css('background', greenButton.buttonPressBG);
       $('#redButton').css('background', redButton.buttonPressBG);
       $('#yellowButton').css('background', yellowButton.buttonPressBG);
@@ -133,6 +141,8 @@ $(document).ready(function() {
     }, 1000);
 
     setTimeout(function(){
+      $("#startButton").css('pointer-events', 'auto');
+      $('#victorySection .pokeText').text("");
       $('#greenButton').css('background', greenButton.buttonBG);
       $('#redButton').css('background', redButton.buttonBG);
       $('#yellowButton').css('background', yellowButton.buttonBG);
