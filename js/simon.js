@@ -24,6 +24,8 @@ $(document).ready(function() {
   var yellowButton = {sound: pikachuSound, buttonID: '#yellowButton', buttonBG: yellowButtonBg, buttonPressBG: yellowButtonPressBg};
   var blueButton = {sound: squirtleSound, buttonID: '#blueButton', buttonBG: blueButtonBg, buttonPressBG: blueButtonPressBg};
 
+  var gameOn = false;
+
   function disableButtons() {
     console.log("Buttons are disabled");
     $("#greenButton").css('pointer-events', 'none');
@@ -66,7 +68,7 @@ $(document).ready(function() {
     startGame();
   });
 
-  $("#sevenSegDisplay").sevenSeg({ digits: 2, value: '--' });
+  $("#sevenSegDisplay").sevenSeg({ digits: 2, value: '' });
 
   /* End Setup */
 
@@ -141,9 +143,10 @@ $(document).ready(function() {
 
 
   /* Function when computer shows a button to press. */
+  var myInterval;
   function showMove() {
     var movesShown = 0;
-    var myInterval;
+
     function timer() {
 
       if (movesShown == currentCount) {
@@ -184,13 +187,39 @@ $(document).ready(function() {
     showMove();
   }
 
+  function showStartButtonOn() {
+    $("#startButton").css('background', 'radial-gradient(at 50%, red 35%, pink');
+    $("#startButton").css('border', '2px solid black');
+    $("#startButton").css('left', '1px');
+  }
+
+  function showStartButtonOff() {
+    $("#startButton").css('background', 'darkred');
+    $("#startButton").css('border', '3px solid black');
+    $("#startButton").css('left', '0px');
+  }
+
 
   function startGame() {
-    currentMove = 0;
-    currentCount = 1;
-    generateButtonPattern();
-    console.log(buttonPattern);
-    showCurrentPattern();
+
+    if (gameOn) {
+      disableButtons();
+      showStartButtonOff();
+      clearInterval(myInterval);
+      $("#sevenSegDisplay").sevenSeg({ value: '' });
+
+      gameOn = false;
+    } else {
+      gameOn = true;
+      showStartButtonOn();
+      currentMove = 0;
+      currentCount = 1;
+
+      generateButtonPattern();
+      console.log(buttonPattern);
+      showCurrentPattern();
+    }
+
   }
 
 

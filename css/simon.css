@@ -165,10 +165,11 @@
 
 
 #startButton {
-  background-color: red;
+  background-color: darkred;
 }
 #startButton:active {
   left: 1px;
+  background: radial-gradient(at 50%, red 35%, pink);
   border: 2px solid black;
 }
 #strictButton {
