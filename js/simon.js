@@ -31,6 +31,8 @@ $(document).ready(function() {
   var yellowButton = {sound: pikachuSound, buttonID: '#yellowButton', buttonBG: yellowButtonBg, buttonPressBG: yellowButtonPressBg};
   var blueButton = {sound: squirtleSound, buttonID: '#blueButton', buttonBG: blueButtonBg, buttonPressBG: blueButtonPressBg};
 
+  $("#sevenSegDisplay").sevenSeg({ digits: 2, value: '' });
+
 
   function disableButtons() {
     console.log("Buttons are disabled");
@@ -83,25 +85,8 @@ $(document).ready(function() {
     resetGame();
   });
 
-
-  function toggleStrictOption() {
-    if (strictMode) {
-      strictMode = false;
-      $("#strictButton").css('background', 'gold');
-      $("#strictButton").css('border', '3px solid black');
-      $("#strictButton").css('left', '0px');
-    } else {
-      strictMode = true;
-      $("#strictButton").css('background', 'radial-gradient(at 50%, yellow 5%, gold)');
-      $("#strictButton").css('border', '2px solid black');
-      $("#strictButton").css('left', '1px');
-    }
-  }
-
-
-  $("#sevenSegDisplay").sevenSeg({ digits: 2, value: '' });
-
   /* End Setup */
+
 
   var buttonPattern;
   function generateButtonPattern() {
@@ -124,6 +109,7 @@ $(document).ready(function() {
       }
     }
   }
+
 
   function victory() {
     victorySound.play();
@@ -150,8 +136,8 @@ $(document).ready(function() {
       showStartButtonOff();
       $("#sevenSegDisplay").sevenSeg({ digits: 2, value: '--' });
     }, 24000);
-
   }
+
 
   /* Function when user presses a button. */
   var timeOut;
@@ -170,6 +156,7 @@ $(document).ready(function() {
 
     if (buttonObj != buttonPattern[currentMove]) {
       console.log("False!");
+      disableButtons();
       //buttonObj.sound.pause(); // in case sound is playing when button is clicked again.
       //buttonObj.sound.currentTime = 0;
       $("#sevenSegDisplay").sevenSeg({ digits: 2, value: '--' });
@@ -180,25 +167,21 @@ $(document).ready(function() {
         currentCount = 1;
         generateButtonPattern(); /* Game starts over, new pattern created. */
       }
-
       setTimeout(showCurrentPattern, 3000);
-      return;
-    }
-
-    console.log("Correct");
-    buttonObj.sound.pause(); // in case sound is playing when button is clicked again.
-    buttonObj.sound.currentTime = 0;
-    buttonObj.sound.play();
-
-    currentMove++;
-    if (currentMove == currentCount) {
-
-      if (currentMove == 2) {
-        victory();
-      } else {
-        currentCount++;
-        currentMove = 0;
-        showCurrentPattern();
+    } else {
+      console.log("Correct");
+      buttonObj.sound.pause(); // in case sound is playing when button is clicked again.
+      buttonObj.sound.currentTime = 0;
+      buttonObj.sound.play();
+      currentMove++;
+      if (currentMove == currentCount) {
+        if (currentMove == 20) {
+          victory();
+        } else {
+          currentCount++;
+          currentMove = 0;
+          showCurrentPattern();
+        }
       }
     }
   }
@@ -210,27 +193,21 @@ $(document).ready(function() {
     var movesShown = 0;
 
     function timer() {
-
       if (movesShown == currentCount) {
         clearInterval(myInterval);
         enableButtons();
         return;
       }
-
       $(buttonPattern[movesShown].buttonID).css('background', buttonPattern[movesShown].buttonPressBG);
       setTimeout(function() {
         console.log("Shutting down: " + buttonPattern[movesShown-1].buttonID);
         $(buttonPattern[movesShown-1].buttonID).css('background', buttonPattern[movesShown-1].buttonBG);
       }, 500);
-
       buttonPattern[movesShown].sound.play();
-
       movesShown++;
     }
-
     myInterval = setInterval(timer, 1500);
   }
-
 
 
   var currentMove; /* Move player is currently on. */
@@ -249,11 +226,13 @@ $(document).ready(function() {
     showMove();
   }
 
+
   function showStartButtonOn() {
     $("#startButton").css('background', 'radial-gradient(at 50%, pink 5%, red)');
     $("#startButton").css('border', '2px solid black');
     $("#startButton").css('left', '1px');
   }
+
 
   function showStartButtonOff() {
     $("#startButton").css('background', 'darkred');
@@ -262,8 +241,41 @@ $(document).ready(function() {
   }
 
 
-  function resetGame() {
+  function startGame() {
+    if (gameOn) {
+      disableButtons();
+      showStartButtonOff();
+      clearInterval(myInterval);
+      $("#sevenSegDisplay").sevenSeg({ value: '' });
+      gameOn = false;
+    } else {
+      gameOn = true;
+      showStartButtonOn();
+      currentMove = 0;
+      currentCount = 1;
+      generateButtonPattern();
+      console.log(buttonPattern);
+      showCurrentPattern();
+    }
+  }
 
+
+  function toggleStrictOption() {
+    if (strictMode) {
+      strictMode = false;
+      $("#strictButton").css('background', 'gold');
+      $("#strictButton").css('border', '3px solid black');
+      $("#strictButton").css('left', '0px');
+    } else {
+      strictMode = true;
+      $("#strictButton").css('background', 'radial-gradient(at 50%, yellow 5%, gold)');
+      $("#strictButton").css('border', '2px solid black');
+      $("#strictButton").css('left', '1px');
+    }
+  }
+
+
+  function resetGame() {
     if (gameOn) {
       disableButtons();
       clearInterval(myInterval);
@@ -273,28 +285,4 @@ $(document).ready(function() {
       showCurrentPattern();
     }
   }
-
-  function startGame() {
-
-    if (gameOn) {
-      disableButtons();
-      showStartButtonOff();
-      clearInterval(myInterval);
-      $("#sevenSegDisplay").sevenSeg({ value: '' });
-
-      gameOn = false;
-    } else {
-      gameOn = true;
-      showStartButtonOn();
-      currentMove = 0;
-      currentCount = 1;
-
-      generateButtonPattern();
-      console.log(buttonPattern);
-      showCurrentPattern();
-    }
-
-  }
-
-
 });

@@ -1,4 +1,13 @@
 
+body {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 @font-face {
     font-family: PokemonText;
     src: url('../media/fonts/PokemonGB.ttf');
@@ -6,6 +15,7 @@
 .pokeText {
   font-family: PokemonText;
   font-size: 0.8em;
+  cursor: pointer;
 }
 #wrapper {
   width: 730px;
@@ -152,7 +162,7 @@
   text-align: center;
   top: 130px;
   left: 5px;
-  /* Change top and font-family/size to get better graphic. */
+  cursor: default;
 }
 
 #buttonRow {
@@ -209,6 +219,7 @@
   font-size: 1em;
   font-weight: bold;
   color: black;
+  cursor: default;
 }
 
 #counterSection {
