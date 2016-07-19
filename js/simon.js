@@ -60,12 +60,16 @@ $(document).ready(function() {
   });
   disableButtons();
 
-  $("#strictButton").click(function() {
-    console.log("Strict button pressed.");
-  });
   $("#startButton").click(function() {
     console.log("Start button pressed.");
     startGame();
+  });
+  $("#strictButton").click(function() {
+    console.log("Strict button pressed.");
+  });
+  $("#resetButton").click(function() {
+    console.log("Reset button pressed.");
+    resetGame();
   });
 
   $("#sevenSegDisplay").sevenSeg({ digits: 2, value: '' });
@@ -188,7 +192,7 @@ $(document).ready(function() {
   }
 
   function showStartButtonOn() {
-    $("#startButton").css('background', 'radial-gradient(at 50%, red 35%, pink');
+    $("#startButton").css('background', 'radial-gradient(at 50%, pink 5%, red)');
     $("#startButton").css('border', '2px solid black');
     $("#startButton").css('left', '1px');
   }
@@ -199,6 +203,18 @@ $(document).ready(function() {
     $("#startButton").css('left', '0px');
   }
 
+
+  function resetGame() {
+
+    if (gameOn) {
+      disableButtons();
+      clearInterval(myInterval);
+      currentMove = 0;
+      currentCount = 1;
+      //do not generate Pattern here. Game should use same pattern from current game.
+      showCurrentPattern();
+    }
+  }
 
   function startGame() {
 

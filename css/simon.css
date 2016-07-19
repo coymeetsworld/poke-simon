@@ -3,7 +3,6 @@
   width: 730px;
   height: 730px;
   margin: 0 auto;
-  background-color: teal;
 }
 
 #gameBoard {
@@ -169,11 +168,11 @@
 }
 #startButton:active {
   left: 1px;
-  background: radial-gradient(at 50%, red 35%, pink);
+  background: radial-gradient(at 50%, pink 5%, red);
   border: 2px solid black;
 }
 #strictButton {
-  background-color: yellow;
+  background-color: gold;
 }
 #strictButton:active {
   left: 1px;
@@ -184,6 +183,7 @@
 }
 #resetButton:active {
   left: 1px;
+  background: radial-gradient(at 50%, skyblue 35%, teal);
   border: 2px solid black;
 }
 
