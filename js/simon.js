@@ -4,11 +4,11 @@ $(document).ready(function() {
   $('.pokemonImage').on('highlight', function(event) { event.preventDefault(); });
 
   /* Setup */
-  var bulbasaurSound = new Audio('media/bulbasaur.wav');
-  var charmanderSound = new Audio('media/charmander.wav');
-  var squirtleSound = new Audio('media/squirtle.wav');
-  var pikachuSound = new Audio('media/pikachu.wav');
-  var psyduckSound = new Audio('media/psyduck.mp3');
+  var bulbasaurSound = new Audio('media/sounds/bulbasaur.wav');
+  var charmanderSound = new Audio('media/sounds/charmander.wav');
+  var squirtleSound = new Audio('media/sounds/squirtle.wav');
+  var pikachuSound = new Audio('media/sounds/pikachu.wav');
+  var psyduckSound = new Audio('media/sounds/psyduck.mp3');
 
   var greenButtonPressBg = 'linear-gradient(135deg, green 20%, lime )';
   var greenButtonBg = 'green';
