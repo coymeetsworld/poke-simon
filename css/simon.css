@@ -8,15 +8,6 @@ body {
   user-select: none;
 }
 
-@font-face {
-  font-family: PokemonText;
-  src: url('../media/fonts/PokemonGB.ttf');
-}
-.poke-text {
-  cursor: pointer;
-  font-family: PokemonText;
-  font-size: .8em;
-}
 
 #gameboard {
   background-color: black;
@@ -77,27 +68,30 @@ body {
   user-select: none;
   width: 200px;
 }
+
 #img-bulbasaur {
   left: 20px;
   position: relative;
   top: 10px;
 }
+
 #img-charmander {
   left: 40px;
   position: relative;
   top: 40px;
 }
+
 #img-pikachu {
   left: 10px;
   position: relative;
   top: 80px;
 }
+
 #img-squirtle {
   left: 75px;
   position: relative;
   top: 85px;
 }
-
 
 #ctl-panel {
   background-color: #000;
@@ -138,6 +132,18 @@ body {
   top: 75px;
   z-index: 11;
 }
+
+@font-face {
+  font-family: PokemonText;
+  src: url(../media/fonts/PokemonGB.ttf);
+}
+
+.poke-text {
+  cursor: pointer;
+  font-family: PokemonText;
+  font-size: .8em;
+}
+
 #panel-label-section {
   background-color: #BF1E2E;
   border-radius: 900px;
@@ -185,21 +191,26 @@ body {
 #start-btn {
   background-color: darkred;
 }
+
 #start-btn:active {
   background: radial-gradient(at 50%, pink 5%, red);
   border: 2px solid black;
   left: 1px;
 }
+
 #strict-btn {
   background-color: gold;
 }
+
 #strict-btn:active {
   border: 2px solid black;
   left: 1px;
 }
+
 #reset-btn {
   background-color: teal;
 }
+
 #reset-btn:active {
   background: radial-gradient(at 50%, skyblue 35%, teal);
   border: 2px solid black;
@@ -237,7 +248,7 @@ body {
 }
 
 #pokeball-corner {
-  background: url('../media/images/pokeball_corner.jpg');
+  background: url(../media/images/pokeball_corner.jpg);
   background-repeat: no-repeat;
   background-size: contain;
   bottom: 0;
@@ -250,7 +261,7 @@ body {
 }
 
 #pokeball1 {
-  background: url('../media/images/pokeball_background.jpg');
+  background: url(../media/images/pokeball_background.jpg);
   background-repeat: no-repeat;
   background-size: contain;
   height: 200px;
@@ -262,7 +273,6 @@ body {
   z-index: -1;
 }
 
-
 /* About modal CSS */
 #my-about {
   bottom: 5px;
@@ -270,14 +280,14 @@ body {
   position: fixed;
 }
 
-a, a:visited{
+a,
+a:visited {
   color: blue;
   text-decoration: none;
 }
 a:hover {
   text-decoration: underline;
 }
-
 
 .modal {
   background-color: rgba(0,0,0,0.9);
@@ -297,6 +307,7 @@ a:hover {
   font-size: 28px;
   font-weight: bold;
 }
+
 .close:hover,
 .close:focus {
   color: white;
