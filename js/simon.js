@@ -13,7 +13,6 @@ $(document).ready(function() {
   $('.pokemon-img').on('dragstart', event => event.preventDefault());
   $('.pokemon-img').on('highlight', event => event.preventDefault());
 
-  /* Setup */
   let bulbasaurSound = new Audio('media/sounds/bulbasaur.wav');
   bulbasaurSound.volume = 0.1;
   let charmanderSound = new Audio('media/sounds/charmander.wav');
@@ -43,7 +42,6 @@ $(document).ready(function() {
 
   $(SEVEN_SEG_DISPLAY_ID).sevenSeg({ digits: 2, value: '' });
 
-
   function disableButtons() {
     $(GREEN_BUTTON_ID).css('pointer-events', 'none');
     $(RED_BUTTON_ID).css('pointer-events', 'none');
@@ -70,6 +68,7 @@ $(document).ready(function() {
   $(YELLOW_BUTTON_ID).click(() => {
     chooseMove(YELLOW_BUTTON);
   });
+  
   disableButtons();
 
   let gameOn = false;
@@ -108,7 +107,6 @@ $(document).ready(function() {
     }
   }
 
-
   function victory() {
     victorySound.play();
     disableButtons();
@@ -117,27 +115,26 @@ $(document).ready(function() {
     setTimeout(() => {
       $(START_BUTTON_ID).css('pointer-events', 'none');
       $('#victory-section .poke-text').text("It's super effective!");
-      $(GREEN_BUTTON_ID).css('background', greenButton.buttonPressBG);
-      $(RED_BUTTON_ID).css('background', redButton.buttonPressBG);
-      $(YELLOW_BUTTON_ID).css('background', yellowButton.buttonPressBG);
-      $(BLUE_BUTTON_ID).css('background', blueButton.buttonPressBG);
+      $(GREEN_BUTTON_ID).css('background', GREEN_BUTTON.buttonPressBG);
+      $(RED_BUTTON_ID).css('background', RED_BUTTON.buttonPressBG);
+      $(YELLOW_BUTTON_ID).css('background', YELLOW_BUTTON.buttonPressBG);
+      $(BLUE_BUTTON_ID).css('background', BLUE_BUTTON.buttonPressBG);
       $(SEVEN_SEG_DISPLAY_ID).sevenSeg({ digits: 2, value: '88' });
     }, 1000);
 
     setTimeout(() => {
       $(START_BUTTON_ID).css('pointer-events', 'auto');
       $('#victory-section .poke-text').text("");
-      $(GREEN_BUTTON_ID).css('background', greenButton.buttonBG);
-      $(RED_BUTTON_ID).css('background', redButton.buttonBG);
-      $(YELLOW_BUTTON_ID).css('background', yellowButton.buttonBG);
-      $(BLUE_BUTTON_ID).css('background', blueButton.buttonBG);
+      $(GREEN_BUTTON_ID).css('background', GREEN_BUTTON.buttonBG);
+      $(RED_BUTTON_ID).css('background', RED_BUTTON.buttonBG);
+      $(YELLOW_BUTTON_ID).css('background', YELLOW_BUTTON.buttonBG);
+      $(BLUE_BUTTON_ID).css('background', BLUE_BUTTON.buttonBG);
       showStartButtonOff();
       $(SEVEN_SEG_DISPLAY_ID).sevenSeg({ digits: 2, value: '--' });
     }, 24000);
   }
 
-
-  /* Function when user presses a button. */
+  // Function when user presses a button.
   let timeOut;
   function chooseMove(buttonObj) {
 
@@ -154,15 +151,13 @@ $(document).ready(function() {
 
     if (buttonObj != buttonPattern[currentMove]) {
       disableButtons();
-      //buttonObj.sound.pause(); // in case sound is playing when button is clicked again.
-      //buttonObj.sound.currentTime = 0;
       $(SEVEN_SEG_DISPLAY_ID).sevenSeg({ digits: 2, value: '--' });
       psyduckSound.play();
       currentMove = 0;
 
       if(strictMode) {
         currentCount = 1;
-        generateButtonPattern(); /* Game starts over, new pattern created. */
+        generateButtonPattern(); // Game starts over, new pattern created.
       }
       setTimeout(showCurrentPattern, 3000);
     } else {
@@ -182,8 +177,7 @@ $(document).ready(function() {
     }
   }
 
-
-  /* Function when computer shows a button to press. */
+  // Function when computer shows a button to press.
   let myInterval;
   function showMove() {
     let movesShown = 0;
@@ -204,9 +198,8 @@ $(document).ready(function() {
     myInterval = setInterval(timer, 1500);
   }
 
-
-  let currentMove; /* Move player is currently on. */
-  let currentCount; /* Number of moves player has to make. */
+  let currentMove; // Move player is currently on.
+  let currentCount; // Number of moves player has to make.
   function showCurrentPattern() {
     disableButtons();
     let showVal;
@@ -219,20 +212,17 @@ $(document).ready(function() {
     showMove();
   }
 
-
   function showStartButtonOn() {
     $(START_BUTTON_ID).css('background', 'radial-gradient(at 50%, pink 5%, red)');
     $(START_BUTTON_ID).css('border', '2px solid black');
     $(START_BUTTON_ID).css('left', '1px');
   }
 
-
   function showStartButtonOff() {
     $(START_BUTTON_ID).css('background', 'darkred');
     $(START_BUTTON_ID).css('border', '3px solid black');
     $(START_BUTTON_ID).css('left', '0px');
   }
-
 
   function startGame() {
     if (gameOn) {
@@ -247,11 +237,10 @@ $(document).ready(function() {
       currentMove = 0;
       currentCount = 1;
       generateButtonPattern();
-      console.log(buttonPattern);
+      //console.log(buttonPattern); //Use for debugging, prints out the random pattern
       showCurrentPattern();
     }
   }
-
 
   function toggleStrictOption() {
     if (strictMode) {
@@ -266,7 +255,6 @@ $(document).ready(function() {
       $(STRICT_BUTTON_ID).css('left', '1px');
     }
   }
-
 
   function resetGame() {
     if (gameOn) {
