@@ -8,6 +8,7 @@ $(document).ready(function() {
   const START_BUTTON_ID = "#start-btn";
   const STRICT_BUTTON_ID = "#strict-btn";
   const RESET_BUTTON_ID = "#reset-btn";
+  const MOVES_TO_WIN_GAME = 20;
   
   $('.pokemon-img').on('dragstart', function(event) { event.preventDefault(); });
   $('.pokemon-img').on('highlight', function(event) { event.preventDefault(); });
@@ -133,7 +134,7 @@ $(document).ready(function() {
 
     setTimeout(function(){
       $(START_BUTTON_ID).css('pointer-events', 'none');
-      $('#victory-section .pokeText').text("It's super effective!");
+      $('#victory-section .poke-text').text("It's super effective!");
       $(GREEN_BUTTON_ID).css('background', greenButton.buttonPressBG);
       $(RED_BUTTON_ID).css('background', redButton.buttonPressBG);
       $(YELLOW_BUTTON_ID).css('background', yellowButton.buttonPressBG);
@@ -143,7 +144,7 @@ $(document).ready(function() {
 
     setTimeout(function(){
       $(START_BUTTON_ID).css('pointer-events', 'auto');
-      $('#victory-section .pokeText').text("");
+      $('#victory-section .poke-text').text("");
       $(GREEN_BUTTON_ID).css('background', greenButton.buttonBG);
       $(RED_BUTTON_ID).css('background', redButton.buttonBG);
       $(YELLOW_BUTTON_ID).css('background', yellowButton.buttonBG);
@@ -189,8 +190,8 @@ $(document).ready(function() {
       buttonObj.sound.currentTime = 0;
       buttonObj.sound.play();
       currentMove++;
-      if (currentMove == currentCount) {
-        if (currentMove == 20) {
+      if (currentMove === currentCount) {
+        if (currentMove === MOVES_TO_WIN_GAME) {
           victory();
         } else {
           currentCount++;
