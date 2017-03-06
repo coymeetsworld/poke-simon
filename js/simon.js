@@ -14,32 +14,32 @@ $(document).ready(function() {
   $('.pokemon-img').on('highlight', function(event) { event.preventDefault(); });
 
   /* Setup */
-  var bulbasaurSound = new Audio('media/sounds/bulbasaur.wav');
+  let bulbasaurSound = new Audio('media/sounds/bulbasaur.wav');
   bulbasaurSound.volume = 0.1;
-  var charmanderSound = new Audio('media/sounds/charmander.wav');
+  let charmanderSound = new Audio('media/sounds/charmander.wav');
   charmanderSound.volume = 0.1;
-  var squirtleSound = new Audio('media/sounds/squirtle.wav');
+  let squirtleSound = new Audio('media/sounds/squirtle.wav');
   squirtleSound.volume = 0.1;
-  var pikachuSound = new Audio('media/sounds/pikachu.wav');
+  let pikachuSound = new Audio('media/sounds/pikachu.wav');
   pikachuSound.volume = 0.1;
-  var psyduckSound = new Audio('media/sounds/psyduck.mp3');
+  let psyduckSound = new Audio('media/sounds/psyduck.mp3');
   psyduckSound.volume = 0.1;
-  var victorySound = new Audio('media/sounds/victory.mp3');
+  let victorySound = new Audio('media/sounds/victory.mp3');
   victorySound.volume = 0.05;
 
-  var greenButtonPressBg = 'linear-gradient(135deg, green 20%, lime )';
-  var greenButtonBg = 'green';
-  var redButtonPressBg = 'linear-gradient(225deg, darkred 20%, red 45%, pink)';
-  var redButtonBg = 'darkred';
-  var yellowButtonPressBg = 'linear-gradient(45deg, goldenrod 5%, yellow 45%, white)';
-  var yellowButtonBg = 'goldenrod';
-  var blueButtonPressBg = 'linear-gradient(315deg, blue 20%, skyblue)';
-  var blueButtonBg = 'darkblue';
+  const GREEN_BUTTON_PRESSED_BG = 'linear-gradient(135deg, green 20%, lime )';
+  const GREEN_BUTTON_BG = 'green';
+  const RED_BUTTON_PRESSED_BG = 'linear-gradient(225deg, darkred 20%, red 45%, pink)';
+  const RED_BUTTON_BG = 'darkred';
+  const YELLOW_BUTTON_PRESSED_BG = 'linear-gradient(45deg, goldenrod 5%, yellow 45%, white)';
+  const YELLOW_BUTTON_BG = 'goldenrod';
+  const BLUE_BUTTON_PRESSED_BG = 'linear-gradient(315deg, blue 20%, skyblue)';
+  const BLUE_BUTTON_BG = 'darkblue';
 
-  var greenButton = {sound: bulbasaurSound, buttonID: GREEN_BUTTON_ID, buttonBG: greenButtonBg, buttonPressBG: greenButtonPressBg};
-  var redButton = {sound: charmanderSound, buttonID: RED_BUTTON_ID, buttonBG: redButtonBg, buttonPressBG: redButtonPressBg};
-  var yellowButton = {sound: pikachuSound, buttonID: YELLOW_BUTTON_ID, buttonBG: yellowButtonBg, buttonPressBG: yellowButtonPressBg};
-  var blueButton = {sound: squirtleSound, buttonID: BLUE_BUTTON_ID, buttonBG: blueButtonBg, buttonPressBG: blueButtonPressBg};
+  const GREEN_BUTTON = {sound: bulbasaurSound, buttonID: GREEN_BUTTON_ID, buttonBG: GREEN_BUTTON_BG, buttonPressBG: GREEN_BUTTON_PRESSED_BG};
+  const RED_BUTTON = {sound: charmanderSound, buttonID: RED_BUTTON_ID, buttonBG: RED_BUTTON_BG, buttonPressBG: RED_BUTTON_PRESSED_BG};
+  const YELLOW_BUTTON = {sound: pikachuSound, buttonID: YELLOW_BUTTON_ID, buttonBG: YELLOW_BUTTON_BG, buttonPressBG: YELLOW_BUTTON_PRESSED_BG};
+  const BLUE_BUTTON = {sound: squirtleSound, buttonID: BLUE_BUTTON_ID, buttonBG: BLUE_BUTTON_BG, buttonPressBG: BLUE_BUTTON_PRESSED_BG};
 
   $(SEVEN_SEG_DISPLAY_ID).sevenSeg({ digits: 2, value: '' });
 
@@ -62,29 +62,29 @@ $(document).ready(function() {
 
   $(GREEN_BUTTON_ID).click(function() {
     console.log("Green button pressed.");
-    chooseMove(greenButton);
+    chooseMove(GREEN_BUTTON);
   });
   $(RED_BUTTON_ID).click(function() {
     console.log("Red button pressed.");
-    chooseMove(redButton);
+    chooseMove(RED_BUTTON);
   });
   $(BLUE_BUTTON_ID).click(function() {
     console.log("Blue button pressed.");
-    chooseMove(blueButton);
+    chooseMove(BLUE_BUTTON);
   });
   $(YELLOW_BUTTON_ID).click(function() {
     console.log("Yellow button pressed.");
-    chooseMove(yellowButton);
+    chooseMove(YELLOW_BUTTON);
   });
   disableButtons();
 
-  var gameOn = false;
+  let gameOn = false;
   $(START_BUTTON_ID).click(function() {
     console.log("Start button pressed.");
     startGame();
   });
 
-  var strictMode = false;
+  let strictMode = false;
   $(STRICT_BUTTON_ID).click(function() {
     console.log("Strict button pressed.");
     toggleStrictOption();
@@ -98,32 +98,26 @@ $(document).ready(function() {
   /* End Setup */
 
 
-  var buttonPattern;
+  let buttonPattern;
   function generateButtonPattern() {
     buttonPattern = []; /* Resets pattern in event game is reset or started over.*/
 
-    buttonPattern.push(greenButton);
-    buttonPattern.push(blueButton);
-    buttonPattern.push(redButton);
-    buttonPattern.push(yellowButton);
-    /* Commented out for testing 
-    for (var i = 0; i < 20; i++) {
+    for (let i = 0; i < MOVES_TO_WIN_GAME; i++) {
       switch (Math.floor(Math.random() * 4 + 1)) {
         case 1:
-          buttonPattern.push(greenButton);
+          buttonPattern.push(GREEN_BUTTON);
           break;
         case 2:
-          buttonPattern.push(redButton);
+          buttonPattern.push(RED_BUTTON);
           break;
         case 3:
-          buttonPattern.push(yellowButton);
+          buttonPattern.push(YELLOW_BUTTON);
           break;
         case 4:
-          buttonPattern.push(blueButton);
+          buttonPattern.push(BLUE_BUTTON);
           break;
       }
     }
-    */
   }
 
 
@@ -156,7 +150,7 @@ $(document).ready(function() {
 
 
   /* Function when user presses a button. */
-  var timeOut;
+  let timeOut;
   function chooseMove(buttonObj) {
 
     if (timeOut) {
@@ -204,12 +198,12 @@ $(document).ready(function() {
 
 
   /* Function when computer shows a button to press. */
-  var myInterval;
+  let myInterval;
   function showMove() {
-    var movesShown = 0;
+    let movesShown = 0;
 
     function timer() {
-      if (movesShown == currentCount) {
+      if (movesShown === currentCount) {
         clearInterval(myInterval);
         enableButtons();
         return;
@@ -226,18 +220,16 @@ $(document).ready(function() {
   }
 
 
-  var currentMove; /* Move player is currently on. */
-  var currentCount; /* Number of moves player has to make. */
+  let currentMove; /* Move player is currently on. */
+  let currentCount; /* Number of moves player has to make. */
   function showCurrentPattern() {
-    console.log("calling showCurrentPattern");
     disableButtons();
-    var showVal;
+    let showVal;
     if (currentCount < 10) {
       showVal = '0' + currentCount.toString();
     } else {
       showVal = currentCount.toString();
     }
-    console.log("ShowVal: " + showVal);
     $(SEVEN_SEG_DISPLAY_ID).sevenSeg({ digits: 2, value: showVal });
     showMove();
   }

@@ -8,7 +8,6 @@ body {
   user-select: none;
 }
 
-
 #gameboard {
   background-color: black;
   border-radius: 365px;
@@ -19,6 +18,7 @@ body {
   z-index: 1;
 }
 
+/* User game buttons */
 .color-btn {
   float: left;
   height: 325px;
@@ -93,6 +93,7 @@ body {
   top: 85px;
 }
 
+/* Control panel section */
 #ctl-panel {
   background-color: #000;
   border-radius: 400px;
@@ -247,6 +248,8 @@ body {
   width: 100px;
 }
 
+/* Background images */
+
 #pokeball-corner {
   background: url(../media/images/pokeball_corner.jpg);
   background-repeat: no-repeat;
@@ -300,7 +303,6 @@ a:hover {
   z-index: 15;
 }
 
-/* Close Button */
 .close {
   color: #000;
   float: right;
@@ -315,7 +317,6 @@ a:hover {
   text-decoration: none;
 }
 
-/* Add Animation */
 @-webkit-keyframes animatetop {
   from {top: -300px; opacity: 0}
   to {top: 0; opacity: 1}
