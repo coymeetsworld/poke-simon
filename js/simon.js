@@ -1,7 +1,16 @@
 $(document).ready(function() {
-
-  $('.pokemonImage').on('dragstart', function(event) { event.preventDefault(); });
-  $('.pokemonImage').on('highlight', function(event) { event.preventDefault(); });
+  
+  const BLUE_BUTTON_ID = "#blue-btn";
+  const GREEN_BUTTON_ID = "#green-btn";
+  const RED_BUTTON_ID = "#red-btn";
+  const YELLOW_BUTTON_ID = "#yellow-btn";
+  const SEVEN_SEG_DISPLAY_ID = "#seven-seg-display";
+  const START_BUTTON_ID = "#start-btn";
+  const STRICT_BUTTON_ID = "#strict-btn";
+  const RESET_BUTTON_ID = "#reset-btn";
+  
+  $('.pokemon-img').on('dragstart', function(event) { event.preventDefault(); });
+  $('.pokemon-img').on('highlight', function(event) { event.preventDefault(); });
 
   /* Setup */
   var bulbasaurSound = new Audio('media/sounds/bulbasaur.wav');
@@ -26,61 +35,61 @@ $(document).ready(function() {
   var blueButtonPressBg = 'linear-gradient(315deg, blue 20%, skyblue)';
   var blueButtonBg = 'darkblue';
 
-  var greenButton = {sound: bulbasaurSound, buttonID: '#greenButton', buttonBG: greenButtonBg, buttonPressBG: greenButtonPressBg};
-  var redButton = {sound: charmanderSound, buttonID: '#redButton', buttonBG: redButtonBg, buttonPressBG: redButtonPressBg};
-  var yellowButton = {sound: pikachuSound, buttonID: '#yellowButton', buttonBG: yellowButtonBg, buttonPressBG: yellowButtonPressBg};
-  var blueButton = {sound: squirtleSound, buttonID: '#blueButton', buttonBG: blueButtonBg, buttonPressBG: blueButtonPressBg};
+  var greenButton = {sound: bulbasaurSound, buttonID: GREEN_BUTTON_ID, buttonBG: greenButtonBg, buttonPressBG: greenButtonPressBg};
+  var redButton = {sound: charmanderSound, buttonID: RED_BUTTON_ID, buttonBG: redButtonBg, buttonPressBG: redButtonPressBg};
+  var yellowButton = {sound: pikachuSound, buttonID: YELLOW_BUTTON_ID, buttonBG: yellowButtonBg, buttonPressBG: yellowButtonPressBg};
+  var blueButton = {sound: squirtleSound, buttonID: BLUE_BUTTON_ID, buttonBG: blueButtonBg, buttonPressBG: blueButtonPressBg};
 
-  $("#sevenSegDisplay").sevenSeg({ digits: 2, value: '' });
+  $(SEVEN_SEG_DISPLAY_ID).sevenSeg({ digits: 2, value: '' });
 
 
   function disableButtons() {
     console.log("Buttons are disabled");
-    $("#greenButton").css('pointer-events', 'none');
-    $("#redButton").css('pointer-events', 'none');
-    $("#yellowButton").css('pointer-events', 'none');
-    $("#blueButton").css('pointer-events', 'none');
+    $(GREEN_BUTTON_ID).css('pointer-events', 'none');
+    $(RED_BUTTON_ID).css('pointer-events', 'none');
+    $(YELLOW_BUTTON_ID).css('pointer-events', 'none');
+    $(BLUE_BUTTON_ID).css('pointer-events', 'none');
   }
 
   function enableButtons() {
     console.log("Buttons are enabled");
-    $("#greenButton").css('pointer-events', 'auto');
-    $("#redButton").css('pointer-events', 'auto');
-    $("#yellowButton").css('pointer-events', 'auto');
-    $("#blueButton").css('pointer-events', 'auto');
+    $(GREEN_BUTTON_ID).css('pointer-events', 'auto');
+    $(RED_BUTTON_ID).css('pointer-events', 'auto');
+    $(YELLOW_BUTTON_ID).css('pointer-events', 'auto');
+    $(BLUE_BUTTON_ID).css('pointer-events', 'auto');
   }
 
-  $("#greenButton").click(function() {
+  $(GREEN_BUTTON_ID).click(function() {
     console.log("Green button pressed.");
     chooseMove(greenButton);
   });
-  $("#redButton").click(function() {
+  $(RED_BUTTON_ID).click(function() {
     console.log("Red button pressed.");
     chooseMove(redButton);
   });
-  $("#blueButton").click(function() {
+  $(BLUE_BUTTON_ID).click(function() {
     console.log("Blue button pressed.");
     chooseMove(blueButton);
   });
-  $("#yellowButton").click(function() {
+  $(YELLOW_BUTTON_ID).click(function() {
     console.log("Yellow button pressed.");
     chooseMove(yellowButton);
   });
   disableButtons();
 
   var gameOn = false;
-  $("#startButton").click(function() {
+  $(START_BUTTON_ID).click(function() {
     console.log("Start button pressed.");
     startGame();
   });
 
   var strictMode = false;
-  $("#strictButton").click(function() {
+  $(STRICT_BUTTON_ID).click(function() {
     console.log("Strict button pressed.");
     toggleStrictOption();
   });
 
-  $("#resetButton").click(function() {
+  $(RESET_BUTTON_ID).click(function() {
     console.log("Reset button pressed.");
     resetGame();
   });
@@ -92,6 +101,11 @@ $(document).ready(function() {
   function generateButtonPattern() {
     buttonPattern = []; /* Resets pattern in event game is reset or started over.*/
 
+    buttonPattern.push(greenButton);
+    buttonPattern.push(blueButton);
+    buttonPattern.push(redButton);
+    buttonPattern.push(yellowButton);
+    /* Commented out for testing 
     for (var i = 0; i < 20; i++) {
       switch (Math.floor(Math.random() * 4 + 1)) {
         case 1:
@@ -108,6 +122,7 @@ $(document).ready(function() {
           break;
       }
     }
+    */
   }
 
 
@@ -117,24 +132,24 @@ $(document).ready(function() {
     gameOn = false;
 
     setTimeout(function(){
-      $("#startButton").css('pointer-events', 'none');
-      $('#victorySection .pokeText').text("It's super effective!");
-      $('#greenButton').css('background', greenButton.buttonPressBG);
-      $('#redButton').css('background', redButton.buttonPressBG);
-      $('#yellowButton').css('background', yellowButton.buttonPressBG);
-      $('#blueButton').css('background', blueButton.buttonPressBG);
-      $("#sevenSegDisplay").sevenSeg({ digits: 2, value: '88' });
+      $(START_BUTTON_ID).css('pointer-events', 'none');
+      $('#victory-section .pokeText').text("It's super effective!");
+      $(GREEN_BUTTON_ID).css('background', greenButton.buttonPressBG);
+      $(RED_BUTTON_ID).css('background', redButton.buttonPressBG);
+      $(YELLOW_BUTTON_ID).css('background', yellowButton.buttonPressBG);
+      $(BLUE_BUTTON_ID).css('background', blueButton.buttonPressBG);
+      $(SEVEN_SEG_DISPLAY_ID).sevenSeg({ digits: 2, value: '88' });
     }, 1000);
 
     setTimeout(function(){
-      $("#startButton").css('pointer-events', 'auto');
-      $('#victorySection .pokeText').text("");
-      $('#greenButton').css('background', greenButton.buttonBG);
-      $('#redButton').css('background', redButton.buttonBG);
-      $('#yellowButton').css('background', yellowButton.buttonBG);
-      $('#blueButton').css('background', blueButton.buttonBG);
+      $(START_BUTTON_ID).css('pointer-events', 'auto');
+      $('#victory-section .pokeText').text("");
+      $(GREEN_BUTTON_ID).css('background', greenButton.buttonBG);
+      $(RED_BUTTON_ID).css('background', redButton.buttonBG);
+      $(YELLOW_BUTTON_ID).css('background', yellowButton.buttonBG);
+      $(BLUE_BUTTON_ID).css('background', blueButton.buttonBG);
       showStartButtonOff();
-      $("#sevenSegDisplay").sevenSeg({ digits: 2, value: '--' });
+      $(SEVEN_SEG_DISPLAY_ID).sevenSeg({ digits: 2, value: '--' });
     }, 24000);
   }
 
@@ -159,7 +174,7 @@ $(document).ready(function() {
       disableButtons();
       //buttonObj.sound.pause(); // in case sound is playing when button is clicked again.
       //buttonObj.sound.currentTime = 0;
-      $("#sevenSegDisplay").sevenSeg({ digits: 2, value: '--' });
+      $(SEVEN_SEG_DISPLAY_ID).sevenSeg({ digits: 2, value: '--' });
       psyduckSound.play();
       currentMove = 0;
 
@@ -222,22 +237,22 @@ $(document).ready(function() {
       showVal = currentCount.toString();
     }
     console.log("ShowVal: " + showVal);
-    $("#sevenSegDisplay").sevenSeg({ digits: 2, value: showVal });
+    $(SEVEN_SEG_DISPLAY_ID).sevenSeg({ digits: 2, value: showVal });
     showMove();
   }
 
 
   function showStartButtonOn() {
-    $("#startButton").css('background', 'radial-gradient(at 50%, pink 5%, red)');
-    $("#startButton").css('border', '2px solid black');
-    $("#startButton").css('left', '1px');
+    $(START_BUTTON_ID).css('background', 'radial-gradient(at 50%, pink 5%, red)');
+    $(START_BUTTON_ID).css('border', '2px solid black');
+    $(START_BUTTON_ID).css('left', '1px');
   }
 
 
   function showStartButtonOff() {
-    $("#startButton").css('background', 'darkred');
-    $("#startButton").css('border', '3px solid black');
-    $("#startButton").css('left', '0px');
+    $(START_BUTTON_ID).css('background', 'darkred');
+    $(START_BUTTON_ID).css('border', '3px solid black');
+    $(START_BUTTON_ID).css('left', '0px');
   }
 
 
@@ -246,7 +261,7 @@ $(document).ready(function() {
       disableButtons();
       showStartButtonOff();
       clearInterval(myInterval);
-      $("#sevenSegDisplay").sevenSeg({ value: '' });
+      $(SEVEN_SEG_DISPLAY_ID).sevenSeg({ value: '' });
       gameOn = false;
     } else {
       gameOn = true;
@@ -263,14 +278,14 @@ $(document).ready(function() {
   function toggleStrictOption() {
     if (strictMode) {
       strictMode = false;
-      $("#strictButton").css('background', 'gold');
-      $("#strictButton").css('border', '3px solid black');
-      $("#strictButton").css('left', '0px');
+      $(STRICT_BUTTON_ID).css('background', 'gold');
+      $(STRICT_BUTTON_ID).css('border', '3px solid black');
+      $(STRICT_BUTTON_ID).css('left', '0px');
     } else {
       strictMode = true;
-      $("#strictButton").css('background', 'radial-gradient(at 50%, yellow 5%, gold)');
-      $("#strictButton").css('border', '2px solid black');
-      $("#strictButton").css('left', '1px');
+      $(STRICT_BUTTON_ID).css('background', 'radial-gradient(at 50%, yellow 5%, gold)');
+      $(STRICT_BUTTON_ID).css('border', '2px solid black');
+      $(STRICT_BUTTON_ID).css('left', '1px');
     }
   }
 
@@ -288,18 +303,18 @@ $(document).ready(function() {
 
   /** Modal **/
 
-  $('#myAbout').click(function() {
-    $('#myModal').css('display', 'block');
+  $('#my-about').click(function() {
+    $('#my-modal').css('display', 'block');
   });
 
   $('.close').click(function() {
-    $('#myModal').css('display', 'none');
+    $('#my-modal').css('display', 'none');
   });
 
   // When the user clicks anywhere outside of the modal, close it
   $(window).click(function(event) {
-    if ($(event.target).is('#myModal') && !$(event.target).is('#myAbout')) {
-      $('#myModal').css('display', 'none');
+    if ($(event.target).is('#my-modal') && !$(event.target).is('#my-about')) {
+      $('#my-modal').css('display', 'none');
     }
   });
 

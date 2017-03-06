@@ -12,18 +12,13 @@ body {
     font-family: PokemonText;
     src: url('../media/fonts/PokemonGB.ttf');
 }
-.pokeText {
+.poke-text {
   font-family: PokemonText;
   font-size: 0.8em;
   cursor: pointer;
 }
-#stuff {
-  width: 730px;
-  height: 730px;
-  margin: 0 auto;
-}
 
-#gameBoard {
+#gameboard {
   width: 730px;
   height: 730px;
   background-color: black;
@@ -33,7 +28,7 @@ body {
   z-index: 1;
 }
 
-.colorButton {
+.color-btn {
   position: relative;
   height: 325px;
   width: 325px;
@@ -44,35 +39,35 @@ body {
   user-select: none;
 }
 
-#greenButton {
+#green-btn {
   border-top-left-radius: 325px;
   background-color: green;
   margin-bottom: 10px;
   margin-right: 10px;
 }
 
-#redButton {
+#red-btn {
   border-top-right-radius: 325px;
   background-color: darkred;
   margin-bottom: 10px;
   margin-left: 10px;
 }
 
-#yellowButton {
+#yellow-btn {
   border-bottom-left-radius: 325px;
   background-color: goldenrod;
   margin-top: 10px;
   margin-right: 10px;
 }
 
-#blueButton {
+#blue-btn {
   border-bottom-right-radius: 325px;
   background-color: darkblue;
   margin-top: 10px;
   margin-left: 10px;
 }
 
-.pokemonImage {
+.pokemon-img {
   width: 200px;
   height: 200px;
   overflow: hidden;
@@ -82,29 +77,29 @@ body {
   -o-user-select: none;
   user-select: none;
 }
-#imageBulbasaur {
+#img-bulbasaur {
   position: relative;
   left: 20px;
   top: 10px;
 }
-#imageCharmander {
+#img-charmander {
   position: relative;
   left: 40px;
   top: 40px;
 }
-#imagePikachu {
+#img-pikachu {
   position: relative;
   left: 10px;
   top: 80px;
 }
-#imageSquirtle {
+#img-squirtle {
   position: relative;
   left: 75px;
   top: 85px;
 }
 
 
-#controlPanel {
+#ctl-panel {
   height: 400px;
   width: 400px;
   background-color: #000;
@@ -115,7 +110,7 @@ body {
   z-index: 3;
 }
 
-#controlPanelOverlay {
+#ctl-panel-overlay {
   height: 360px;
   width: 360px;
   background-color: white;
@@ -127,7 +122,7 @@ body {
   z-index: 4;
 }
 
-#panelLabelMask {
+#panel-label-mask {
   position: absolute;
   height: 175px;
   width: 360px;
@@ -136,14 +131,14 @@ body {
   z-index: 9;
 }
 
-#victorySection {
+#victory-section {
   position: absolute;
   color: white;
   top: 75px;
   left: 50px;
   z-index: 11;
 }
-#panelLabelSection {
+#panel-label-section {
   position: absolute;
   height: 360px;
   width: 360px;
@@ -152,7 +147,7 @@ body {
   z-index: 10;
 }
 
-#panelLabel {
+#panel-label {
   position: absolute;
   width: 350px;
   font-family: Orbitron, sans-serif;
@@ -165,7 +160,7 @@ body {
   cursor: default;
 }
 
-#buttonRow {
+#btn-row {
   position: absolute;
   text-align: center;
   width: 360px;
@@ -173,13 +168,13 @@ body {
   left: 5px;
 }
 
-.buttonWell {
+.btn-well {
   position: relative;
   display: inline-block;
   margin: 20px;
 }
 
-.optionButton {
+.option-btn {
   position: relative;
   height: 25px;
   width: 25px;
@@ -188,31 +183,31 @@ body {
 }
 
 
-#startButton {
+#start-btn {
   background-color: darkred;
 }
-#startButton:active {
+#start-btn:active {
   left: 1px;
   background: radial-gradient(at 50%, pink 5%, red);
   border: 2px solid black;
 }
-#strictButton {
+#strict-btn {
   background-color: gold;
 }
-#strictButton:active {
+#strict-btn:active {
   left: 1px;
   border: 2px solid black;
 }
-#resetButton {
+#reset-btn {
   background-color: teal;
 }
-#resetButton:active {
+#reset-btn:active {
   left: 1px;
   background: radial-gradient(at 50%, skyblue 35%, teal);
   border: 2px solid black;
 }
 
-.optionButtonLabel {
+.option-btn-label {
   position: relative;
   top: 7px;
   left: -5px;
@@ -222,7 +217,7 @@ body {
   cursor: default;
 }
 
-#counterSection {
+#counter-section {
   position: absolute;
   text-align: center;
   width: 350px;
@@ -230,11 +225,11 @@ body {
   top: 290px;
 }
 
-#counterDisplay {
+#counter-display {
   position: relative;
 }
 
-#sevenSegDisplay {
+#seven-seg-display {
   height: 50px;
   width: 100px;
   margin-left: 10px;
@@ -242,7 +237,7 @@ body {
   display: inline-block;
 }
 
-#pokeBallCorner {
+#pokeball-corner {
   background: url('../media/images/pokeball_corner.jpg');
   background-repeat: no-repeat;
   background-size: contain;
@@ -255,7 +250,7 @@ body {
   height: 400px;
 }
 
-#pokeBall1 {
+#pokeball1 {
   background: url('../media/images/pokeball_background.jpg');
   background-repeat: no-repeat;
   background-size: contain;
@@ -270,7 +265,7 @@ body {
 
 
 /* About modal CSS */
-#myAbout {
+#my-about {
   position: fixed;
   bottom: 5px;
   left: 175px;
