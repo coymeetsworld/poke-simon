@@ -10,8 +10,8 @@ $(document).ready(function() {
   const RESET_BUTTON_ID = "#reset-btn";
   const MOVES_TO_WIN_GAME = 20;
   
-  $('.pokemon-img').on('dragstart', function(event) { event.preventDefault(); });
-  $('.pokemon-img').on('highlight', function(event) { event.preventDefault(); });
+  $('.pokemon-img').on('dragstart', event => event.preventDefault());
+  $('.pokemon-img').on('highlight', event => event.preventDefault());
 
   /* Setup */
   let bulbasaurSound = new Audio('media/sounds/bulbasaur.wav');
@@ -45,7 +45,6 @@ $(document).ready(function() {
 
 
   function disableButtons() {
-    console.log("Buttons are disabled");
     $(GREEN_BUTTON_ID).css('pointer-events', 'none');
     $(RED_BUTTON_ID).css('pointer-events', 'none');
     $(YELLOW_BUTTON_ID).css('pointer-events', 'none');
@@ -53,50 +52,39 @@ $(document).ready(function() {
   }
 
   function enableButtons() {
-    console.log("Buttons are enabled");
     $(GREEN_BUTTON_ID).css('pointer-events', 'auto');
     $(RED_BUTTON_ID).css('pointer-events', 'auto');
     $(YELLOW_BUTTON_ID).css('pointer-events', 'auto');
     $(BLUE_BUTTON_ID).css('pointer-events', 'auto');
   }
 
-  $(GREEN_BUTTON_ID).click(function() {
-    console.log("Green button pressed.");
+  $(GREEN_BUTTON_ID).click(() => {
     chooseMove(GREEN_BUTTON);
   });
-  $(RED_BUTTON_ID).click(function() {
-    console.log("Red button pressed.");
+  $(RED_BUTTON_ID).click(() => {
     chooseMove(RED_BUTTON);
   });
-  $(BLUE_BUTTON_ID).click(function() {
-    console.log("Blue button pressed.");
+  $(BLUE_BUTTON_ID).click(() => {
     chooseMove(BLUE_BUTTON);
   });
-  $(YELLOW_BUTTON_ID).click(function() {
-    console.log("Yellow button pressed.");
+  $(YELLOW_BUTTON_ID).click(() => {
     chooseMove(YELLOW_BUTTON);
   });
   disableButtons();
 
   let gameOn = false;
-  $(START_BUTTON_ID).click(function() {
-    console.log("Start button pressed.");
+  $(START_BUTTON_ID).click(() => {
     startGame();
   });
 
   let strictMode = false;
-  $(STRICT_BUTTON_ID).click(function() {
-    console.log("Strict button pressed.");
+  $(STRICT_BUTTON_ID).click(() => {
     toggleStrictOption();
   });
 
-  $(RESET_BUTTON_ID).click(function() {
-    console.log("Reset button pressed.");
+  $(RESET_BUTTON_ID).click(() => {
     resetGame();
   });
-
-  /* End Setup */
-
 
   let buttonPattern;
   function generateButtonPattern() {
@@ -126,7 +114,7 @@ $(document).ready(function() {
     disableButtons();
     gameOn = false;
 
-    setTimeout(function(){
+    setTimeout(() => {
       $(START_BUTTON_ID).css('pointer-events', 'none');
       $('#victory-section .poke-text').text("It's super effective!");
       $(GREEN_BUTTON_ID).css('background', greenButton.buttonPressBG);
@@ -136,7 +124,7 @@ $(document).ready(function() {
       $(SEVEN_SEG_DISPLAY_ID).sevenSeg({ digits: 2, value: '88' });
     }, 1000);
 
-    setTimeout(function(){
+    setTimeout(() => {
       $(START_BUTTON_ID).css('pointer-events', 'auto');
       $('#victory-section .poke-text').text("");
       $(GREEN_BUTTON_ID).css('background', greenButton.buttonBG);
@@ -154,18 +142,17 @@ $(document).ready(function() {
   function chooseMove(buttonObj) {
 
     if (timeOut) {
-      setTimeout(function() {
+      setTimeout(() => {
         $(buttonObj.buttonID).css('background', buttonObj.buttonBG);
       }, 100);
     }
     $(buttonObj.buttonID).css('background', buttonObj.buttonPressBG);
-    timeOut = setTimeout(function(){
+    timeOut = setTimeout(() => {
         $(buttonObj.buttonID).css('background', buttonObj.buttonBG);
         timeOut = null;
     }, 750);
 
     if (buttonObj != buttonPattern[currentMove]) {
-      console.log("False!");
       disableButtons();
       //buttonObj.sound.pause(); // in case sound is playing when button is clicked again.
       //buttonObj.sound.currentTime = 0;
@@ -179,7 +166,6 @@ $(document).ready(function() {
       }
       setTimeout(showCurrentPattern, 3000);
     } else {
-      console.log("Correct");
       buttonObj.sound.pause(); // in case sound is playing when button is clicked again.
       buttonObj.sound.currentTime = 0;
       buttonObj.sound.play();
@@ -209,8 +195,7 @@ $(document).ready(function() {
         return;
       }
       $(buttonPattern[movesShown].buttonID).css('background', buttonPattern[movesShown].buttonPressBG);
-      setTimeout(function() {
-        console.log("Shutting down: " + buttonPattern[movesShown-1].buttonID);
+      setTimeout(() => {
         $(buttonPattern[movesShown-1].buttonID).css('background', buttonPattern[movesShown-1].buttonBG);
       }, 500);
       buttonPattern[movesShown].sound.play();
@@ -296,16 +281,16 @@ $(document).ready(function() {
 
   /** Modal **/
 
-  $('#my-about').click(function() {
+  $('#my-about').click(() => {
     $('#my-modal').css('display', 'block');
   });
 
-  $('.close').click(function() {
+  $('.close').click(() => {
     $('#my-modal').css('display', 'none');
   });
 
   // When the user clicks anywhere outside of the modal, close it
-  $(window).click(function(event) {
+  $(window).click((event) => {
     if ($(event.target).is('#my-modal') && !$(event.target).is('#my-about')) {
       $('#my-modal').css('display', 'none');
     }
