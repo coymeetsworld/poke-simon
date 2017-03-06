@@ -2,7 +2,7 @@
 
 ## Description
 
-PokéSimon takes the typical [Simon]("https://en.wikipedia.org/wiki/Simon_%28gam%289") game, but adds a [Pokémon]("https://en.wikipedia.org/wiki/Pok%C3%A9mon") theme to it. It is a game used to test memory skill by remembering patterns that increase in length as the game progresses.
+PokéSimon takes the typical [Simon](https://en.wikipedia.org/wiki/Simon_%28gam%289) game, but adds a [Pokémon](https://en.wikipedia.org/wiki/Pok%C3%A9mon) theme to it. It is a game used to test memory skill by remembering patterns that increase in length as the game progresses.
 
 ## Live Demo
 
@@ -36,14 +36,14 @@ Copyright (c) 2017
 
 ## Other Credits
 
-Pokémon is trademark of [Nintendo]("http://www.pokemon.com/us/legal/") and created by Satoshi Tajiri in 1995.
+Pokémon is trademark of [Nintendo](http://www.pokemon.com/us/legal/) and created by Satoshi Tajiri in 1995.
 
-Multiple Pokémon sounds from [here]("http://www.sounds-resource.com/nintendo_64/pkmnsnap/sound/1659/").
+Multiple Pokémon sounds from [here](http://www.sounds-resource.com/nintendo_64/pkmnsnap/sound/1659/).
 
-Psyduck sound on failure grabbed [here]("https://drive.google.com/file/d/0B5J1GAprDj4PVkQ2T0pULWtvVUE/view").
+Psyduck sound on failure grabbed [here](https://drive.google.com/file/d/0B5J1GAprDj4PVkQ2T0pULWtvVUE/view).
 
-Victory sound on completing 20 moves correctly, found [here]("http://downloads.khinsider.com/game-soundtracks/album/pokemon-original-game-soundtrack/116-victory-vs-trainer-.mp3").
+Victory sound on completing 20 moves correctly, found [here](http://downloads.khinsider.com/game-soundtracks/album/pokemon-original-game-soundtrack/116-victory-vs-trainer-.mp3).
 
-Pokeball images grabbed from [this wallpaper]("http://wallpaperswide.com/pokemon_pokeball_red-wallpapers.html").
+Pokeball images grabbed from [this wallpaper](http://wallpaperswide.com/pokemon_pokeball_red-wallpapers.html).
 
-Seven-segment display used is a jQuery UI plugin developed by Brandon White and the code/documentation can be found on his [GitHub website]("http://brandonlwhite.github.io/sevenSeg.js/").
+Seven-segment display used is a jQuery UI plugin developed by Brandon White and the code/documentation can be found on his [GitHub website](http://brandonlwhite.github.io/sevenSeg.js/).
