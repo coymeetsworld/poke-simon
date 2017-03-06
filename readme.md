@@ -2,7 +2,7 @@
 
 ## Description
 
-PokéSimon takes the typical [Simon](https://en.wikipedia.org/wiki/Simon_%28gam%289) game, but adds a [Pokémon](https://en.wikipedia.org/wiki/Pok%C3%A9mon) theme to it. It is a game used to test memory skill by remembering patterns that increase in length as the game progresses.
+PokéSimon takes the typical [Simon](https://en.wikipedia.org/wiki/Simon_%28game%29) game, but adds a [Pokémon](https://en.wikipedia.org/wiki/Pok%C3%A9mon) theme to it. It is a game used to test memory skill by remembering patterns that increase in length as the game progresses.
 
 ## Live Demo
 
@@ -28,7 +28,7 @@ With 'Strict mode' off, PokéSimon will replay the pattern at the current level 
 
 ## About
 
-PokéSimon was written by Coy Sanders as a requirement in the [Advanced Front-End Development Projects](https://www.freecodecamp.com/challenges/build-a-pomodoro-clock) for [FreeCodeCamp](http://www.freecodecamp.com) to earn the Front-End Development Certification.
+PokéSimon was written by Coy Sanders as a requirement in the [Advanced Front-End Development Projects](https://www.freecodecamp.com/challenges/build-a-simon-game) for [FreeCodeCamp](http://www.freecodecamp.com) to earn the Front-End Development Certification.
 
 software is licensed under the [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -38,7 +38,7 @@ Copyright (c) 2017
 
 Pokémon is trademark of [Nintendo](http://www.pokemon.com/us/legal/) and created by Satoshi Tajiri in 1995.
 
-Multiple Pokémon sounds from [here](http://www.sounds-resource.com/nintendo_64/pkmnsnap/sound/1659/).
+Multiple Pokémon sounds from [The Sounds Resource](http://www.sounds-resource.com/).
 
 Psyduck sound on failure grabbed [here](https://drive.google.com/file/d/0B5J1GAprDj4PVkQ2T0pULWtvVUE/view).
 
