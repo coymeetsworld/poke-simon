@@ -28,6 +28,7 @@ body {
   user-select: none;
   width: 325px;
   z-index: 2;
+  cursor: pointer;
 }
 
 #green-btn {
@@ -276,10 +277,11 @@ body {
   z-index: -1;
 }
 
-/* About modal CSS */
+/* Link to GitHub */
 #my-about {
   bottom: 5px;
-  left: 175px;
+  left: 140px;
+  font-size: 0.8em;
   position: fixed;
 }
 
@@ -290,70 +292,4 @@ a:visited {
 }
 a:hover {
   text-decoration: underline;
-}
-
-.modal {
-  background-color: rgba(0,0,0,0.9);
-  display: none;
-  height: 100%;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 15;
-}
-
-.close {
-  color: #000;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: white;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-@-webkit-keyframes animatetop {
-  from {top: -300px; opacity: 0}
-  to {top: 0; opacity: 1}
-}
-
-@keyframes animatetop {
-  from {top: -300px; opacity: 0}
-  to {top: 0; opacity: 1}
-}
-
-.modal-content {
-  -webkit-animation-duration: 0.4s;
-  -webkit-animation-name: animatetop;
-  animation-duration: .4s;
-  animation-name: animatetop;
-  background-color: #fefefe;
-  border: 1px solid #888;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  margin: auto;
-  padding: 0;
-  position: relative;
-  width: 50%;
-}
-
-.modal-header {
-  background-color: #BF1E2E;
-  color: white;
-  height: 50px;
-  padding: 2px 16px;
-  text-align: center;
-}
-
-.modal-body {
-  padding: 2px 16px;
-}
-
-.modal-footer {
-  background-color: #BF1E2E;
-  height: 20px;
 }
